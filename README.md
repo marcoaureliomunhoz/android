@@ -76,6 +76,27 @@
 - 1.5 - API 2 - Cupcake
 - 1.0 - API 1 - Petit Four
 
+**SuportLibrary vs AndroidX**
+
+Toda vez que o Google lança uma nova versão do Android esta nova versão vem com bibliotecas nativas para as novas funcionalidades, ou seja, as bibliotecas fazem parte do sistema operacional.
+
+Durante muito tempo o Google foi lançando bibliotecas de compatibilidade para permitir que usuários em versões antigas do Android usufruissem das funcionalidades disponíveis nas novas versões. Para que seja possível executar um app em várias versões do sistema operacional as bibliotecas de suporte são fundamentais e essas biblitecas são carregadas junto ao APK do app.
+
+Recentemente o Google criou o AndroidX, uma nova hierarquia de pacotes (bibliotecas) que facilita o suporte a novas funcionalidades em sistemas operacionais antigos. O AndroidX é a nova forma que o Google enctontrou para que usuários em versões antigas possam aproveitar as funcionalidades das novas versões do Android. O AndroidX apresentará nomes de pacotes simplificados, bem como IDs de grupos e artefatos do Maven que melhor refletem o conteúdo de cada pacote e os níveis de API suportados.
+
+Ao contrário da biblioteca de suporte, os pacotes AndroidX são mantidos e atualizados separadamente. Os pacotes androidx são versionados por Semantic Versioning, ou seja, seguem o modelo de versionamento da maioria das bibliotecas modernas de hoje (inclusive ela começa da versão 1.0.0). Você pode atualizar as bibliotecas do AndroidX em seu projeto de forma independente, ou seja, você pode ir subindo a versão do AndroidX, que por sua vez vai evoluindo conforme necessário.
+
+**Jetifier:**
+
+Trata-se de uma ferramenta que converte os pacotes de suporte de dependência de nossos apps para pacotes equivalentes dentro do AndroidX. 
+
+Para usar o AndroidX em um projeto, é preciso configurar o targetSdkVersion do projeto para 28 e adicionar as 2 linhas a seguir no arquivo gradle.properties.
+
+<pre>
+android.useAndroidX=true
+android.enableJetifier=true
+</pre>
+
 ---
 
 **Referências:**
@@ -87,3 +108,9 @@
 - https://pt.wikipedia.org/wiki/Android
 - https://www.oficinadanet.com.br/post/13939-a-historia-do-android
 - https://medium.com/@mppagano/tamanho-das-telas-dos-celulares-uxdrops-7b33757187c3
+- https://stackoverflow.com/questions/51280090/what-is-androidx
+- https://medium.com/@paulo_linhares/androidx-adeus-support-library-584b64bf56ef
+- https://stackoverflow.com/questions/51680671/what-is-jetifier/52518822#52518822
+- https://www.androidauthority.com/android-jetpack-android-support-library-878587/
+- https://developer.android.com/jetpack/docs/getting-started
+- https://developer.android.com/jetpack/androidx/versions
