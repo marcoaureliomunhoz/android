@@ -97,6 +97,19 @@ android.useAndroidX=true
 android.enableJetifier=true
 </pre>
 
+**Recursos:**
+
+- **Drawable:**
+    - https://developer.android.com/guide/topics/graphics/drawables
+    - https://developer.android.com/guide/topics/resources/drawable-resource
+    - https://developer.android.com/guide/topics/graphics/vector-drawable-resourcesddd
+
+**Ciclo de Vida de uma Activity:**
+
+<img src="assets/activity_lifecycle.png">
+
+- https://developer.android.com/reference/android/app/Activity#activity-lifecycle
+
 ---
 
 **Referências:**
