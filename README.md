@@ -110,6 +110,23 @@ android.enableJetifier=true
 
 - https://developer.android.com/reference/android/app/Activity#activity-lifecycle
 
+**ListView vs RecyclerView:**
+
+O RecyclerView é um novo ListView. O RecyclerView é recomendado como boa prática e foi introduzido junto ao Material Design. As principais vantagens do RecyclerView são:
+
+- Suporte a animações ao adicionar ou remover elementos da lista;
+- Controle automático de reutilização das views (padrão ViewHolder);
+    - ViewHolder: a ideia é manter/reaproveitar as views já criadas e trocar apenas o conteúdo. Esse recurso otimiza a rolagem da listview, principalmente quando temos muitos registros. Na ListView tradicional o desenvolvedor tem que fazer todo o controle de reciclagem/reaproveitamento. No RecyclerView esse controle é automático e transparente ao desenvolvedor.
+- Novo gerenciador de layout e de renderização de views como listas, grids ou outra forma customizada;
+
+O RecyclerView continua usando o conceito de adapters para preencher o conteúdo da lista.
+
+**Serializable vs Parcelable:**
+
+Para transeferir objetos de uma activity para outra através de uma intent podemos usar a interface Serializable. Caso você esteja transferindo objetos simples, use Serializable mesmo, pois é mais simples também. Porém se estiver transferindo objetos complexos e com muita informação utilize Parcelable, pois apesar de ser mais trabalhoso de implementar, esta nova opção é bem mais otimizada e economiza muito mais memória durante a transferência.
+
+https://medium.com/@lucas_marciano/por-que-usar-o-parcelable-ao-inv%C3%A9s-do-serializable-5f7543a9c7f3
+
 ---
 
 **Referências:**
@@ -127,3 +144,4 @@ android.enableJetifier=true
 - https://www.androidauthority.com/android-jetpack-android-support-library-878587/
 - https://developer.android.com/jetpack/docs/getting-started
 - https://developer.android.com/jetpack/androidx/versions
+- Livro Google Android (Ricardo R. Lecheta)

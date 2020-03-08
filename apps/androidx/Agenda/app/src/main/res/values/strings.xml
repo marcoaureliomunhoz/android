@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Agenda</string>
+
     <string name="main_activity_title_bar">Agenda</string>
-    <string name="formulario_aluno_activity_title_bar">Novo aluno</string>
+    <string name="main_activity_context_menu_item_remover_title">Remover Aluno</string>
+
+    <string name="formulario_aluno_activity_title_bar_novo">Novo aluno</string>
+    <string name="formulario_aluno_activity_title_bar_editar">Editar aluno</string>
 </resources>
