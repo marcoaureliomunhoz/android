@@ -2,8 +2,14 @@
     <string name="app_name">Agenda</string>
 
     <string name="main_activity_title_bar">Agenda</string>
-    <string name="main_activity_context_menu_item_remover_title">Remover Aluno</string>
+    <string name="main_activity_context_menu_item_remover_title">Remover</string>
 
-    <string name="formulario_aluno_activity_title_bar_novo">Novo aluno</string>
-    <string name="formulario_aluno_activity_title_bar_editar">Editar aluno</string>
+    <string name="formulario_aluno_activity_title_bar_novo">Novo Aluno</string>
+    <string name="formulario_aluno_activity_title_bar_editar">Editar Aluno</string>
+
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+
+    <string name="message_title_confirmacao_remocao_aluno">Removendo Aluno</string>
+    <string name="message_text_confirmacao_remocao_aluno">Deseja realmente remover o aluno \'%1$s?\'</string>
 </resources>

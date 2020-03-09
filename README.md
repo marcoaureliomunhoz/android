@@ -127,6 +127,15 @@ Para transeferir objetos de uma activity para outra através de uma intent podem
 
 https://medium.com/@lucas_marciano/por-que-usar-o-parcelable-ao-inv%C3%A9s-do-serializable-5f7543a9c7f3
 
+**Tipos de Dialogs:**
+
+- AlertDialog: dialog específico para informar ou questionar o usuário;
+- DatePickerDialog: dialog para obter data;
+- TimerPickerDialog: dialog para obter hora;
+- DialogFragment: container para criar dialogs customizados;
+
+https://developer.android.com/guide/topics/ui/dialogs
+
 ---
 
 **Referências:**

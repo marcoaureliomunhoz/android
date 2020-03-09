@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import br.com.marcoaureliomunhoz.agenda.AgendaApplication;
 import br.com.marcoaureliomunhoz.agenda.R;
 import br.com.marcoaureliomunhoz.agenda.dao.AlunoDAO;
 import br.com.marcoaureliomunhoz.agenda.model.Aluno;
@@ -24,7 +25,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText textTelefone;
     private EditText textEmail;
 
-    private AlunoDAO dao = new AlunoDAO();
+    private AlunoDAO dao = AgendaApplication.alunoDAO;
     private Aluno aluno = null;
 
     @Override
