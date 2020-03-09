@@ -1,5 +1,5 @@
 package br.com.marcoaureliomunhoz.agenda.ui.activity;
 
-public interface Constantes {
+interface UiConstantes {
     String KEY_ALUNO_INTENT = "aluno_intent";
 }

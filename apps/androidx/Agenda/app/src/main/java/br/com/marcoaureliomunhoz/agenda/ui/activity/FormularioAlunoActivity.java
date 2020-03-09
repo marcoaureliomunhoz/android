@@ -3,20 +3,19 @@ package br.com.marcoaureliomunhoz.agenda.ui.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.marcoaureliomunhoz.agenda.AgendaApplication;
 import br.com.marcoaureliomunhoz.agenda.R;
 import br.com.marcoaureliomunhoz.agenda.dao.AlunoDAO;
+import br.com.marcoaureliomunhoz.agenda.helper.IntentHelper;
+import br.com.marcoaureliomunhoz.agenda.helper.ToastHelper;
 import br.com.marcoaureliomunhoz.agenda.model.Aluno;
 
 public class FormularioAlunoActivity extends AppCompatActivity {
@@ -25,7 +24,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText textTelefone;
     private EditText textEmail;
 
-    private AlunoDAO dao = AgendaApplication.alunoDAO;
+    private final AlunoDAO dao = AgendaApplication.alunoDAO;
     private Aluno aluno = null;
 
     @Override
@@ -68,10 +67,12 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     }
 
     private boolean loadData() {
-        Intent dados = getIntent();
+        /*Intent dados = getIntent();
 
-        if (dados.hasExtra(Constantes.KEY_ALUNO_INTENT))
-            aluno = (Aluno) dados.getSerializableExtra(Constantes.KEY_ALUNO_INTENT);
+        if (dados.hasExtra(UiConstantes.KEY_ALUNO_INTENT))
+            aluno = (Aluno) dados.getSerializableExtra(UiConstantes.KEY_ALUNO_INTENT);*/
+
+        aluno = (Aluno) IntentHelper.getSerializable(this, UiConstantes.KEY_ALUNO_INTENT);
 
         if (aluno != null) {
             textNome.setText(aluno.getNome());
@@ -85,12 +86,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void inicializarBotaoSalvarAluno() {
         Button botaoSalvar = findViewById(R.id.activity_formulario_aluno_botao_salvar);
-        botaoSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                salvarAluno();
-            }
-        });
+        botaoSalvar.setOnClickListener(v -> salvarAluno());
     }
 
     private void obterAluno() {
@@ -113,7 +109,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         List<String> errosDominio = dao.salvar(aluno);
 
         if (errosDominio.size() > 0) {
-            Toast.makeText(this, errosDominio.get(0), Toast.LENGTH_LONG).show();
+            ToastHelper.show(this, errosDominio.get(0));
             return;
         }
 

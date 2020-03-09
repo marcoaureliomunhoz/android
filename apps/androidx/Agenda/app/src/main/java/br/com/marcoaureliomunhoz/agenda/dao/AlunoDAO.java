@@ -27,7 +27,7 @@ public class AlunoDAO {
         errosDominio.clear();
 
         if (aluno.getNome().isEmpty()) {
-            errosDominio.add(Constantes.INFORME_O_NOME);
+            errosDominio.add(DaoConstantes.INFORME_O_NOME);
         }
     }
 

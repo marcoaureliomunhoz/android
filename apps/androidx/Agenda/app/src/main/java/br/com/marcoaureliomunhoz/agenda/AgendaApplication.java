@@ -8,8 +8,4 @@ public class AgendaApplication extends Application {
 
     public static final AlunoDAO alunoDAO = new AlunoDAO();
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
 }

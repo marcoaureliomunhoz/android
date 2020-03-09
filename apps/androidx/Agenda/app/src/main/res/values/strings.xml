@@ -12,4 +12,8 @@
 
     <string name="message_title_confirmacao_remocao_aluno">Removendo Aluno</string>
     <string name="message_text_confirmacao_remocao_aluno">Deseja realmente remover o aluno \'%1$s?\'</string>
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
+    <string name="e_mail">E-mail</string>
+    <string name="salvar">Salvar</string>
 </resources>

@@ -5,6 +5,6 @@
     <item
         android:id="@+id/item_menu_salvar_aluno"
         android:icon="@drawable/ic_salvar_aluno"
-        android:title="Salvar"
+        android:title="@string/salvar"
         app:showAsAction="always" />
 </menu>

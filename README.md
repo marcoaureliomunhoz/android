@@ -134,7 +134,23 @@ https://medium.com/@lucas_marciano/por-que-usar-o-parcelable-ao-inv%C3%A9s-do-se
 - TimerPickerDialog: dialog para obter hora;
 - DialogFragment: container para criar dialogs customizados;
 
-https://developer.android.com/guide/topics/ui/dialogs
+https://developer.android.com/guide/topics/ui/dialogs  
+
+**Usando alguns dos recursos da linguagem Java 8:**
+
+Adicione no arquivo build.grade da aplicação
+
+```java
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+```
+
+https://developer.android.com/studio/write/java8-support  
+https://www.alura.com.br/artigos/utilizando-features-do-java-8-no-android
 
 ---
 

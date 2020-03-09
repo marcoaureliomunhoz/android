@@ -3,7 +3,5 @@
     <color name="colorPrimary">#14568C</color>
     <color name="colorPrimaryDark">#0E3F66</color>
     <color name="colorAccent">#2196F3</color>
-    <color name="colorTextInput">#000</color>
     <color name="colorTextButton">#FFF</color>
-    <color name="colorTextBar">#FFF</color>
 </resources>

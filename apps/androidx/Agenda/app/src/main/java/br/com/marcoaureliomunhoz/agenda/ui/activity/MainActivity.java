@@ -1,10 +1,8 @@
 package br.com.marcoaureliomunhoz.agenda.ui.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +20,7 @@ import java.util.List;
 import br.com.marcoaureliomunhoz.agenda.AgendaApplication;
 import br.com.marcoaureliomunhoz.agenda.R;
 import br.com.marcoaureliomunhoz.agenda.dao.AlunoDAO;
+import br.com.marcoaureliomunhoz.agenda.helper.DialogHelper;
 import br.com.marcoaureliomunhoz.agenda.helper.StringHelper;
 import br.com.marcoaureliomunhoz.agenda.model.Aluno;
 import br.com.marcoaureliomunhoz.agenda.ui.adapter.ListaAlunosAdapter;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ListaAlunosAdapter adapter = null;
 
     private List<Aluno> alunos = new ArrayList<>();
-    private AlunoDAO dao = AgendaApplication.alunoDAO;
+    private final AlunoDAO dao = AgendaApplication.alunoDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void inicializarBotaoNovoAluno() {
         FloatingActionButton botaoNovoAluno = findViewById(R.id.activity_main_button_novo_aluno);
-        botaoNovoAluno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this, FormularioAlunoActivity.class));
-                abrirFormularioAluno(null);
-            }
+        botaoNovoAluno.setOnClickListener(v -> {
+            //startActivity(new Intent(MainActivity.this, FormularioAlunoActivity.class));
+            abrirFormularioAluno(null);
         });
     }
 
@@ -105,12 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inicializarListView() {
-        listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                listViewItemClick(position);
-            }
-        });
+        listaAlunos.setOnItemClickListener((adapterView, view, position, id) -> listViewItemClick(position));
         /*listaAlunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -143,28 +134,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void abrirFormularioAluno(Aluno aluno) {
         Intent intent = new Intent(this, FormularioAlunoActivity.class);
-        intent.putExtra(Constantes.KEY_ALUNO_INTENT, aluno);
+        intent.putExtra(UiConstantes.KEY_ALUNO_INTENT, aluno);
         startActivity(intent);
     }
 
     private void confirmarRemocao(int posicao) {
         final Aluno aluno = alunos.get(posicao);
         if (aluno != null) {
-            AlertDialog alertDialog = new AlertDialog
+            DialogHelper.confirm(
+                this,
+                StringHelper.getStringFromResource(this, R.string.message_title_confirmacao_remocao_aluno),
+                StringHelper.getStringFromResource(this,
+                    R.string.message_text_confirmacao_remocao_aluno,
+                    aluno.getNome()),
+                    () -> efetivarRemocao(aluno));
+
+            /*AlertDialog alertDialog = new AlertDialog
                 .Builder(this)
                 .setTitle(R.string.message_title_confirmacao_remocao_aluno)
                 .setMessage(StringHelper.getStringFromResource(this,
                         R.string.message_text_confirmacao_remocao_aluno,
                         aluno.getNome()))
-                .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        efetivarRemocao(aluno);
-                    }
-                })
+                .setPositiveButton(R.string.sim, (dialog, which) -> efetivarRemocao(aluno))
                 .setNegativeButton(R.string.nao, null)
                 .create();
-            alertDialog.show();
+            alertDialog.show();*/
         }
     }
 
