@@ -110,7 +110,7 @@ Plataformas para criação de drawable/shapes:
 
 - https://angrytools.com/android/button/
 
-Exemplo de um drawable/shape com fundo laranja e cantos arredondados para background de botões:
+Exemplo de um drawable/shape (shape_orange_button.xml) com fundo laranja e cantos arredondados para background de botões:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -120,15 +120,17 @@ Exemplo de um drawable/shape com fundo laranja e cantos arredondados para backgr
 </shape>
 ```
 
+<img src="assets/drawable_shape_orange_button.png">
+
 Aplicando o drawable/shape no background do botão:
 
 ```xml
-    <Button
-        android:id="@+id/btnNew"
-        android:text="New"
-        ...
-        android:background="@drawable/botao_redondo_laranja"
-        ... />
+<Button
+    android:id="@+id/btnNew"
+    android:text="New"
+    ...
+    android:background="@drawable/shape_orange_button"
+    ... />
 ```
 
 **Ciclo de Vida de uma Activity:**
