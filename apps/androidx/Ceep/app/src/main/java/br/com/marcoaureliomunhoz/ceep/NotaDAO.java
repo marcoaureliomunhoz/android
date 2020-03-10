@@ -3,7 +3,7 @@ package br.com.marcoaureliomunhoz.ceep;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotaDao {
+public class NotaDAO {
 
     private static final List<Nota> notas = new ArrayList<>();
     private static int proximoId = 1;
@@ -12,7 +12,7 @@ public class NotaDao {
         return new ArrayList<>(notas);
     }
 
-    private void persistir(Nota nota) {
+    public void salvar(Nota nota) {
         if (nota.getId() > 0)
             editar(nota);
         else
