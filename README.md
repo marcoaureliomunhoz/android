@@ -103,6 +103,33 @@ android.enableJetifier=true
     - https://developer.android.com/guide/topics/graphics/drawables
     - https://developer.android.com/guide/topics/resources/drawable-resource
     - https://developer.android.com/guide/topics/graphics/vector-drawable-resourcesddd
+    - https://guides.codepath.com/android/drawables
+    - https://www.vogella.com/tutorials/AndroidDrawables/article.html
+
+Plataformas para criação de drawable/shapes:
+
+- https://angrytools.com/android/button/
+
+Exemplo de um drawable/shape com fundo laranja e cantos arredondados para background de botões:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@android:color/holo_orange_dark" />
+    <corners android:radius="10dp" />
+</shape>
+```
+
+Aplicando o drawable/shape no background do botão:
+
+```xml
+    <Button
+        android:id="@+id/btnNew"
+        android:text="New"
+        ...
+        android:background="@drawable/botao_redondo_laranja"
+        ... />
+```
 
 **Ciclo de Vida de uma Activity:**
 
