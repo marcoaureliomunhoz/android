@@ -150,6 +150,8 @@ O RecyclerView é um novo ListView. O RecyclerView é recomendado como boa prát
 
 O RecyclerView continua usando o conceito de adapters para preencher o conteúdo da lista.
 
+https://developer.android.com/reference/android/support/v7/widget/RecyclerView.Adapter.html
+
 **Serializable vs Parcelable:**
 
 Para transeferir objetos de uma activity para outra através de uma intent podemos usar a interface Serializable. Caso você esteja transferindo objetos simples, use Serializable mesmo, pois é mais simples também. Porém se estiver transferindo objetos complexos e com muita informação utilize Parcelable, pois apesar de ser mais trabalhoso de implementar, esta nova opção é bem mais otimizada e economiza muito mais memória durante a transferência.
@@ -180,6 +182,73 @@ android {
 
 https://developer.android.com/studio/write/java8-support  
 https://www.alura.com.br/artigos/utilizando-features-do-java-8-no-android
+
+**Obtendo resultado de uma activity:**
+
+Quando enviamos uma intent de uma activity A para uma activity B temos a opção de enviar um código (requestCode).
+
+```java
+// ActivityA.class
+
+final int REQUISITON_CODE_TO_ANY_ACTION = 1;
+
+private void abrirActivityB() {
+    Intent intent = new Intent(this, ActivityB.class);
+    intent.putExtra("name", "Marco");
+    startActivityForResult(intent, REQUISITON_CODE_TO_ANY_ACTION);
+}
+```
+
+Quando a activity B é desempilhada e a activity A entra em cena temos a opção de receber um resultado enviado pela activity B:
+
+```java
+// ActivityB.class
+
+final int REQUISITON_CODE_TO_ANY_ACTION = 1;
+final string name;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout...);
+
+    Intent intent = getIntent();
+    name = intent.hasExtra("name")
+        ? intent.getSerializableExtra("name")
+        : "";
+}
+
+private void finalizarB() {
+    Intent intent = new Intent();
+    intent.putExtra("name", name);
+    intent.putExtra("size", name.size());
+    setResult(Activity.OK, intent);
+    finish();
+}
+```
+
+```java
+// ActivityA.class
+
+final int REQUISITON_CODE_TO_ANY_ACTION = 1;
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    // uma boa prática é primeiramente verificar qual foi a requisição realizada
+    if(requestCode == REQUISITON_CODE_TO_ANY_ACTION){
+
+        // depois, aqui podemos executar alguma ação independente do resultado
+
+        // depois, aqui podemos verificar o resultado e executar alguma ação conforme este
+        if(resultCode == Activity.RESULT_OK) {
+            // aqui podemos realizar alguma ação em caso de resultado ok
+        } else if (resultCode == Activity.RESULT_CANCELED){
+            // aqui podemos realizar alguma ação em caso de cancelamento
+        }
+
+    }
+}
+```
 
 ---
 

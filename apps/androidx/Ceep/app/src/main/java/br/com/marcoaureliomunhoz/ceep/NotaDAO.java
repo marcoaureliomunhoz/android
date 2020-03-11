@@ -1,6 +1,7 @@
 package br.com.marcoaureliomunhoz.ceep;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NotaDAO {
@@ -33,5 +34,25 @@ public class NotaDAO {
     public void remover(Nota nota) {
         int posicao = notas.indexOf(nota);
         if (posicao >= 0) notas.remove(posicao);
+    }
+
+    public void remover(int posicao) {
+        notas.remove(posicao);
+    }
+
+    public void mudarOrdem(int posicaoOrigem, int posicaoDestino) {
+        if (posicaoOrigem < posicaoDestino) {
+            for (int i = posicaoOrigem; i < posicaoDestino; i++) {
+                Collections.swap(notas, i, i + 1);
+            }
+        } else {
+            for (int i = posicaoOrigem; i > posicaoDestino; i--) {
+                Collections.swap(notas, i, i - 1);
+            }
+        }
+    }
+
+    public void trocarPosicao(int posicaoOrigem, int posicaoDestino) {
+        Collections.swap(notas, posicaoOrigem, posicaoDestino);
     }
 }
