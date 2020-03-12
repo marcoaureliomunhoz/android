@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MemoFormActivity">
+
+    <TextView
+        android:id="@+id/captionTitleMemoForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingLeft="3dp"
+        android:text="@string/title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtTitleMemoForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_title_edit_text"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/captionTitleMemoForm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/captionTitleMemoForm"
+        app:layout_constraintTop_toBottomOf="@+id/captionTitleMemoForm" />
+
+    <TextView
+        android:id="@+id/captionDescriptionMemoForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="3dp"
+        android:text="@string/description"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtTitleMemoForm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtTitleMemoForm"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleMemoForm" />
+
+    <EditText
+        android:id="@+id/txtDescriptionMemoForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/hint_description_edit_text"
+        android:inputType="textMultiLine"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/captionDescriptionMemoForm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/captionDescriptionMemoForm"
+        app:layout_constraintTop_toBottomOf="@+id/captionDescriptionMemoForm" />
+
+    <TextView
+        android:id="@+id/captionResponsibleMemoForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="3dp"
+        android:text="Responsible"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtDescriptionMemoForm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtDescriptionMemoForm"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescriptionMemoForm" />
+
+    <EditText
+        android:id="@+id/txtResponsibleMemoForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:maxLines="1"
+        android:gravity="start|top"
+        android:hint="@string/hint_responsible_edit_text"
+        android:inputType="textCapWords"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/captionResponsibleMemoForm"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/captionResponsibleMemoForm"
+        app:layout_constraintTop_toBottomOf="@+id/captionResponsibleMemoForm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
