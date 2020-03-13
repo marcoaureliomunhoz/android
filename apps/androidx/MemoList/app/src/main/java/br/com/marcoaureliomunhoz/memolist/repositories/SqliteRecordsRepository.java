@@ -18,8 +18,8 @@ public abstract class SqliteRecordsRepository implements RepositoryTemplate<Reco
         if (record.getId() > 0) {
             update(record);
         } else {
-            long id = insert(record);
-            record.setId((int)id);
+            Long id = insert(record);
+            record.setId(id.intValue());
         }
         return record.getId();
     }
@@ -54,7 +54,7 @@ public abstract class SqliteRecordsRepository implements RepositoryTemplate<Reco
     // room methods
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract long insert(Record record);
+    abstract Long insert(Record record);
 
     @Update
     abstract void update(Record record);

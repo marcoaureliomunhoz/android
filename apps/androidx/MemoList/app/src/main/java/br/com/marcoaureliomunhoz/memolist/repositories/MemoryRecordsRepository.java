@@ -85,7 +85,8 @@ public class MemoryRecordsRepository implements RepositoryTemplate<Record> {
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
                             "Fusce pellentesque lobortis blandit. " +
                             "Suspendisse potenti. Vestibulum sollicitudin vulputate iaculis. " +
-                            "Nullam suscipit."
+                            "Nullam suscipit.",
+                    ""
             ));
         }
     }

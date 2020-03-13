@@ -18,7 +18,7 @@ import br.com.marcoaureliomunhoz.memolist.models.Record;
 
 public class MemoListRecyclerAdapter extends RecyclerView.Adapter<MemoListRecyclerAdapter.MemoListViewHolder> {
 
-    private final List<Record> records;
+    private List<Record> records;
     private final Context context;
     private OnItemMemoListRecyclerClickListener onItemRecyclerClickListener;
 
@@ -74,17 +74,21 @@ public class MemoListRecyclerAdapter extends RecyclerView.Adapter<MemoListRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MemoListRecyclerAdapter.MemoListViewHolder holder, int position) {
-        holder.setRecord(records.get(position));
+        if (records != null) holder.setRecord(records.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return records.size();
+        return records != null ? records.size() : 0;
     }
 
     public void refresh(List<Record> records) {
-        this.records.clear();
-        this.records.addAll(records);
+        if (this.records != null) {
+            this.records.clear();
+            this.records.addAll(records);
+        } else {
+            this.records = records;
+        }
         this.notifyDataSetChanged();
     }
 

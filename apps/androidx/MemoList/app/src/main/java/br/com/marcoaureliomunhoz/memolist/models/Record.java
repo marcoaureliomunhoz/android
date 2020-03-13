@@ -19,9 +19,10 @@ public class Record extends Model implements Serializable {
     public Record() { }
 
     @Ignore
-    public Record(String title, String description) {
+    public Record(String title, String description, String responsible) {
         this.title = title;
         this.description = description;
+        this.responsible = responsible;
     }
 
     public String getTitle() {
@@ -79,7 +80,7 @@ public class Record extends Model implements Serializable {
     public static class Creator {
 
         public static Record EmptyModel() {
-            return new Record("", "");
+            return new Record("", "", "");
         }
 
     }

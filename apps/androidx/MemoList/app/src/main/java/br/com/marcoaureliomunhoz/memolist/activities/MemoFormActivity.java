@@ -5,6 +5,7 @@ import br.com.marcoaureliomunhoz.memolist.helpers.IntentHelper;
 import br.com.marcoaureliomunhoz.memolist.helpers.ToastHelper;
 import br.com.marcoaureliomunhoz.memolist.models.Record;
 import br.com.marcoaureliomunhoz.memolist.repositories.RepositoryTemplate;
+import br.com.marcoaureliomunhoz.memolist.services.SaveRepositoryAsyncTask;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -62,18 +63,17 @@ public class MemoFormActivity extends AppCompatActivity {
 
     private void save() {
         loadModelFromView();
-        int confirmation = repository.save(model);
-        if (confirmation >= 0) {
-            Intent intent = new Intent();
-            intent.putExtra(MemoListActivity.EXTRA_RESULT_MODEL_NAME, model);
-            setResult(Activity.RESULT_OK, intent);
-            finish();
-        } else {
-            List<String> requirements = model.getRequirements();
-            if (requirements.size() > 0) {
+        new SaveRepositoryAsyncTask<Record>(repository, resultModel -> {
+            List<String> requirements = resultModel.getRequirements();
+            if (requirements == null || requirements.size() == 0) {
+                Intent intent = new Intent();
+                intent.putExtra(MemoListActivity.EXTRA_RESULT_MODEL_NAME, resultModel);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
+            } else {
                 ToastHelper.show(this, requirements.get(0));
             }
-        }
+        }).execute(model);
     }
 
     private boolean loadModelFromExtra() {
@@ -95,7 +95,7 @@ public class MemoFormActivity extends AppCompatActivity {
         String responsible = txtResponsible.getText().toString();
 
         if (model == null) {
-            model = new Record(title, description);
+            model = new Record(title, description, responsible);
         } else {
             model.setTitle(title);
             model.setDescription(description);

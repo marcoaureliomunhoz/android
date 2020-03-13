@@ -6,6 +6,7 @@ import br.com.marcoaureliomunhoz.memolist.callbacks.MemoListItemTouchHelperCallb
 import br.com.marcoaureliomunhoz.memolist.listeners.OnItemMemoListRecyclerClickListener;
 import br.com.marcoaureliomunhoz.memolist.models.Record;
 import br.com.marcoaureliomunhoz.memolist.repositories.RepositoryTemplate;
+import br.com.marcoaureliomunhoz.memolist.services.CloneRepositoryAsyncTask;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,6 +30,7 @@ public class MemoListActivity extends AppCompatActivity {
 
     private final RepositoryTemplate<Record> repository = MemoListApplication.repository;
     private MemoListRecyclerAdapter adapter = null;
+    private int listRefreshCount = 0;
     @BindView(R.id.listRecords) RecyclerView listRecords;
 
     @Override
@@ -46,6 +48,9 @@ public class MemoListActivity extends AppCompatActivity {
         super.onResume();
 
         prepareMemoListRecyclerView();
+
+        if (listRefreshCount == 0)
+            refreshList();
     }
 
     @Override
@@ -59,9 +64,16 @@ public class MemoListActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_item_add_record) {
             openMemoForm(null);
         } else if (item.getItemId() == R.id.menu_item_refresh_list) {
-            adapter.refresh(repository.clone());
+            refreshList();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshList() {
+        new CloneRepositoryAsyncTask<Record>(
+                repository,
+                list -> adapter.refresh(list)
+        ).execute();
     }
 
     @Override
@@ -106,7 +118,7 @@ public class MemoListActivity extends AppCompatActivity {
     }
 
     private void prepareAdapterForMemoListRecyclerView() {
-        adapter = new MemoListRecyclerAdapter(this, repository.clone());
+        adapter = new MemoListRecyclerAdapter(this, null);
         listRecords.setAdapter(adapter);
     }
 

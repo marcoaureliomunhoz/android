@@ -11,10 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.MemoFormActivity"></activity>
-        <activity android:name=".activities.MemoListActivity">
+        <activity android:name=".activities.MemoListActivity"></activity>
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

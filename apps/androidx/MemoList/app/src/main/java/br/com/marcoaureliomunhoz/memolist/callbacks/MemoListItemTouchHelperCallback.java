@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import br.com.marcoaureliomunhoz.memolist.MemoListApplication;
 import br.com.marcoaureliomunhoz.memolist.adapters.MemoListRecyclerAdapter;
 import br.com.marcoaureliomunhoz.memolist.models.Record;
+import br.com.marcoaureliomunhoz.memolist.services.RemoveRepositoryAsyncTask;
 
 public class MemoListItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
@@ -30,10 +31,10 @@ public class MemoListItemTouchHelperCallback extends ItemTouchHelper.Callback {
         int positionSource = sourceViewHolder.getAdapterPosition();
         int positionTarget = targetViewHolder.getAdapterPosition();
 
-        Record source = adapter.getByPosition(positionSource);
-        Record target = adapter.getByPosition(positionTarget);
+        //Record source = adapter.getByPosition(positionSource);
+        //Record target = adapter.getByPosition(positionTarget);
 
-        MemoListApplication.repository.swap(source, target);
+        //MemoListApplication.repository.swap(source, target);
         adapter.swap(positionSource, positionTarget);
 
         return true;
@@ -42,8 +43,13 @@ public class MemoListItemTouchHelperCallback extends ItemTouchHelper.Callback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
-        Record record = adapter.remove(position);
-        MemoListApplication.repository.removeById(record.getId());
+
+        Record record = adapter.getByPosition(position);
+
+        new RemoveRepositoryAsyncTask<Record>(
+                MemoListApplication.repository,
+                result -> adapter.remove(position)
+        ).execute(record);
     }
 
 }

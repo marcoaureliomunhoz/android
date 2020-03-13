@@ -24,7 +24,7 @@ public abstract class MemoListDatabase extends RoomDatabase {
     public static class Factory {
         public static SqliteRecordsRepository SqliteRecordsRepository(Context context) {
             return Room.databaseBuilder(context, MemoListDatabase.class, MemoListDatabase.DATABASE_NAME)
-                    .allowMainThreadQueries()
+                    //.allowMainThreadQueries()
                     .addMigrations(
                         Migration_1To2.create(),
                         Migration_2To3.create()

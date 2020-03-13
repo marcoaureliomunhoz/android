@@ -234,6 +234,8 @@ final int REQUISITON_CODE_TO_ANY_ACTION = 1;
 
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
     // uma boa prática é primeiramente verificar qual foi a requisição realizada
     if(requestCode == REQUISITON_CODE_TO_ANY_ACTION){
 
@@ -249,6 +251,11 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 }
 ```
+
+**Opções para persitência de dados:**
+
+- **SharedPreferencies:** recurso de persistência "chave-valor". Este é mais indicado para armazenar preferências do usuário. (https://developer.android.com/training/data-storage/shared-preferences)
+- **Banco de dados Room:** o Room é uma camada de abstração sobre o SQLite. Com ele fica mais fácil a persistência de dados no dispositivo em um banco SQLite. (https://developer.android.com/training/data-storage/room)
 
 ---
 
@@ -267,4 +274,5 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 - https://www.androidauthority.com/android-jetpack-android-support-library-878587/
 - https://developer.android.com/jetpack/docs/getting-started
 - https://developer.android.com/jetpack/androidx/versions
+- https://www.alura.com.br/artigos/salvando-informacoes-com-o-shared-preferences
 - Livro Google Android (Ricardo R. Lecheta)
