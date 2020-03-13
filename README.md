@@ -257,6 +257,18 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 - **SharedPreferencies:** recurso de persistência "chave-valor". Este é mais indicado para armazenar preferências do usuário. (https://developer.android.com/training/data-storage/shared-preferences)
 - **Banco de dados Room:** o Room é uma camada de abstração sobre o SQLite. Com ele fica mais fácil a persistência de dados no dispositivo em um banco SQLite. (https://developer.android.com/training/data-storage/room)
 
+**Opções para requisições HTTP:**
+
+- **Retrofit:** https://square.github.io/retrofit
+    - Converter para Json: com.squareup.retrofit2:converter-gson  
+    - Loggin Interceptor: https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor  
+- **Volley:** https://developer.android.com/training/volley
+
+
+**Opções para trabalhar com JSON:** 
+
+- **Gson:** https://github.com/google/gson  
+
 ---
 
 **Referências:**

@@ -4,6 +4,9 @@
   "description": "",
   "main": "src/loader.js",
   "scripts": {
+    "mongo-start": "sudo systemctl start mongod",
+    "mongo-status": "sudo systemctl status mongod",
+    "mongo-stop": "sudo systemctl stop mongod",
     "dev": "nodemon",
     "production": "pm2 start src/loader.js --name todo-app"
   },
