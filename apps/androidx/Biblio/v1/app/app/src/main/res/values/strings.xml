@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Biblio</string>
+    <string name="inserir">Inserir</string>
+    <string name="formulario">Formulário</string>
+    <string name="novo">Novo</string>
+    <string name="salvar">Salvar</string>
+    <string name="atencao">Atenção</string>
+    <string name="message_text_confirmacao_exclusao">Deseja realmente excluir \'%1$s\'?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+</resources>
