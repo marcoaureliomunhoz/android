@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listBooksFragment">
+
+    <fragment
+        android:id="@+id/listBooksFragment"
+        android:name="br.com.marcoaureliomunhoz.livreto.ui.fragments.ListBooksFragment"
+        android:label="fragment_list_books"
+        tools:layout="@layout/fragment_list_books" >
+        <action
+            android:id="@+id/action_listBooksFragment_to_listChaptersFragment"
+            app:destination="@id/listChaptersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listChaptersFragment"
+        android:name="br.com.marcoaureliomunhoz.livreto.ui.fragments.ListChaptersFragment"
+        android:label="fragment_list_chapters"
+        tools:layout="@layout/fragment_list_chapters" >
+        <action
+            android:id="@+id/action_listChaptersFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+        <argument
+            android:name="model"
+            app:argType="br.com.marcoaureliomunhoz.livreto.models.Book" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="br.com.marcoaureliomunhoz.livreto.ui.fragments.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" >
+        <action
+            android:id="@+id/action_descriptionFragment_to_listBooksFragment"
+            app:destination="@id/listBooksFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="model"
+            app:argType="br.com.marcoaureliomunhoz.livreto.models.Chapter" />
+    </fragment>
+
+</navigation>
