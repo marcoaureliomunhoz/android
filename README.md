@@ -269,6 +269,19 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 - **Gson:** https://github.com/google/gson  
 
+**Opções para injeção de dependência:**
+
+- **koin:** https://insert-koin.io
+- **dagger:** https://github.com/google/dagger
+
+**Navigation:** 
+
+Recurso de configuração de navegação, inclusive com visualização gráfica do mapa de navegação. 
+
+> Sempre que alterar o gráfico de navegação realize a compilação para que sejam gerados as classes "Directions" com as "actions".
+
+https://developer.android.com/guide/navigation/navigation-getting-started
+
 ---
 
 **Referências:**
