@@ -274,6 +274,11 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 - **koin:** https://insert-koin.io
 - **dagger:** https://github.com/google/dagger
 
+**Opções para trabalhar com imagens:**
+
+- **Glide:** https://github.com/bumptech/glide
+- **Picasso:** https://square.github.io/picasso
+
 **Navigation:** 
 
 Recurso de configuração de navegação, inclusive com visualização gráfica do mapa de navegação. 
@@ -281,6 +286,12 @@ Recurso de configuração de navegação, inclusive com visualização gráfica 
 > Sempre que alterar o gráfico de navegação realize a compilação para que sejam gerados as classes "Directions" com as "actions".
 
 https://developer.android.com/guide/navigation/navigation-getting-started
+
+**Data Binding:** 
+
+Data binding significa vincular de forma declarativa os componentes de UI (ou seja, views que ficam em layouts) com fontes de dados.
+
+https://developer.android.com/topic/libraries/data-binding
 
 ---
 
